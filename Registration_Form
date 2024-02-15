@@ -1,0 +1,110 @@
+
+import java.awt.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.event.KeyListener;
+
+public class Registration_Form {
+     Label username,password,conpassword;
+     Label hiden1, hiden2,hiden3;
+     TextField textfield_1 , textfield_2, textfield_3;
+     JFrame frame;
+     Button button_clear;
+	 
+     Registration_Form (){
+     // Frame details
+     frame = new JFrame();
+     frame.setSize(350,400);
+     frame.setLayout(null);
+     frame.setResizable(false);
+     frame.setTitle("Registration Form");
+     frame.setVisible(true);
+     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+     
+     
+     username = new Label("Username");
+     username.setBounds(30,40,57,20);
+     
+     password = new Label("Password");
+     password.setBounds(30,111,57,20);
+     conpassword = new Label("Confirm Password");
+     conpassword.setBounds(30,180,100,20);
+     
+     textfield_1 = new TextField();
+     textfield_1.setBounds(30,60,275,40); 
+     
+     hiden1 = new Label(" ");
+     hiden1.setBounds(30,100,57,16);
+     hiden1.addKeyListener(new KeyAdapter(){
+     public void keyReleased(KeyEvent e) {
+     hiden1.setText("Enter a username");
+     } 
+     });
+     
+     textfield_2 = new TextField();
+     textfield_2.setBounds(30,130,275,40);
+     
+     hiden2 = new Label("");
+     hiden2.setBounds(30,167,57,18);
+     hiden2.addKeyListener(new KeyAdapter(){
+     public void keyReleased(KeyEvent e) {
+     if(textfield_2.getText().isEmpty()) {
+      hiden2.setText("Enter a password");
+     }else if (textfield_2.getText().length() < 8) {
+      hiden2.setText("The password is too weak");
+     }else if (textfield_2.getText().length() >15){
+      hiden2.setText("The password is too strong");
+     }else {
+      hiden2.setText("Password is valid");
+     }
+     } 
+     });
+     
+     
+     hiden3 = new Label(" ");
+     hiden3.setBounds(30,240,57,18);
+     hiden3.addKeyListener(new KeyAdapter(){
+     public void keyReleased(KeyEvent e) {
+     String eval = textfield_2.getText();
+     if(textfield_3.getText().contentEquals(eval)) {
+     hiden3.setText("Password does not match");
+     }else {
+     hiden3.setText("Password matched!");
+     }
+     } 
+     });
+     
+    
+     textfield_3 = new TextField();
+     textfield_3.setBounds(30,200,275,40);
+     
+     
+     button_clear = new Button("Clear");
+     button_clear.setBounds(120,270,80,50);
+     button_clear.addActionListener(new ActionListener() {
+     public void actionPerformed(ActionEvent e) {
+    	 textfield_1.setText(" ");
+    	 textfield_2.setText(" ");
+    	 textfield_3.setText(" ");	 
+     }
+     });
+     
+     
+     frame.add(username);
+     frame.add(textfield_1);
+     frame.add(hiden1);
+     frame.add(textfield_2);
+     frame.add(password);
+     frame.add(conpassword);
+     frame.add(hiden2);
+     frame.add(hiden3);
+     frame.add(textfield_3);
+     frame.add(button_clear);
+     }
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+     Registration_Form rf = new Registration_Form();
+	}
+
+}
