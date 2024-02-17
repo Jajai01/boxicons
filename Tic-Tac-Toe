@@ -1,0 +1,92 @@
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+
+public class TTT_withAI {
+      
+	 JFrame frame;
+	 Label front_Title,user_tf,owners,turns,score_X,score_Y,user_box;
+	 Panel Front_page,Board_Holders,Score_Board,Decision_Board;
+	 TextField username;
+	 ImageIcon wallpaper;
+	 Button start,quit,restart,back;
+	 Button Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9;
+	 int turner,stop;
+	 String def_username,user_real;
+	 TTT_withAI(){
+	  
+	   frame = new JFrame();
+	   frame.setSize(800,650);
+	   frame.setTitle("Tic-Tac-Toe with AI Implementation");
+	   frame.setLayout(null);
+	   frame.setResizable(false);
+	   frame.setVisible(true);
+	   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	   
+	   
+	   // The panel for the first page
+	   Front_page = new Panel();
+	   Front_page.setBackground(Color.orange);
+	   Front_page.setBounds(0,0,800,650);
+	   Front_page.setLayout(null);
+	   
+	   // Title of the game 'Tic-Tac-Toe'
+	   front_Title = new Label();
+	   front_Title.setText("Tic-Tac-Toe");
+	   front_Title.setFont(new Font("Arial",Font.PLAIN,50));
+	   front_Title.setBounds(270,200,270,60);
+	   
+	   //TextField for the player username
+	   username = new TextField();
+	   username.setBounds(310,310,200,30);
+	   username.setFont(new Font("Arial",Font.PLAIN,20));
+	   
+	   // Label for username
+	   user_tf = new Label("Username");
+	   user_tf.setBounds(365,290,120,20);
+	   user_tf.setFont(new Font("Arial",Font.PLAIN,18));
+	   
+	   Board_Holders = new Panel();   
+	   Board_Holders.setSize(800,650);
+	   Board_Holders.setBackground(Color.orange);
+	   Board_Holders.setVisible(false);
+	   
+	   // Start button, the most important of all
+	   start = new Button("Start");
+	   start.setPreferredSize(new Dimension(200,300));
+	   start.setBounds(350,400,100,70);
+	   start.setBackground(Color.gray);
+	   start.setForeground(Color.white);
+	   start.setEnabled(true);
+	   start.addActionListener(new ActionListener () {
+		   public void actionPerformed(ActionEvent e) {
+		  // String container = username.getText();
+			if(username.getText().isEmpty()) {
+            def_username = "Bhoszx MaPaGmahl28";
+			}else {
+		 user_real = username.getText();
+		 Board_Holders.setVisible(true);
+			}
+         }	   
+	   });	
+	   frame.setLayout(null);
+	   frame.setResizable(false);
+	   frame.setVisible(true);
+	   // Add components tframe.add(start);
+	   Front_page.add(user_tf);
+	   Front_page.add(start);
+	   Front_page.add(username);
+	   Front_page.add(front_Title);
+	   frame.add(Front_page);
+	   frame.add(Board_Holders);
+	   
+	 
+		   
+		   
+		   
+   }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		 TTT_withAI tic_tac = new TTT_withAI();
+	}
+ }
