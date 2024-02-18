@@ -1,0 +1,260 @@
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.Label;
+import java.awt.Panel;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class MainBoard_TTT {
+      
+	
+	 JFrame frame;
+	 Label user_tf,owners,turns,score_X,score_Y,user_box;
+	 Panel Board_Holders,Button_Board,Score_Board,Decision_Board;
+	 TextField username;
+	 Button start,quit,restart,back;
+	 Button Button1,Button2,Button3,Button4,Button5,Button6,Button7,Button8,Button9;
+      String startgame = "X";
+	 //String def_username,user_real;
+	   
+	 MainBoard_TTT() {
+		   frame = new JFrame();
+		   frame.setSize(800,650);
+		   frame.setTitle("Tic-Tac-Toe with AI Implementation");
+		   frame.setLayout(null);
+		   frame.setResizable(false);
+		   frame.setVisible(true);
+		   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		   
+		   Board_Holders = new Panel();
+		   Board_Holders.setBackground(Color.orange);
+		   Board_Holders.setBounds(0,0,800,650);
+		   Board_Holders.setLayout(null);
+		   
+	 
+		   Button_Board = new Panel ();
+		   Button_Board.setBounds(5,80,450,500);
+		   Button_Board.setVisible(true);
+		   Button_Board.setLayout(null);
+		   Button_Board.setBackground(Color.white);
+		   
+		   Score_Board = new Panel ();
+		   Score_Board.setBounds(460,80,300,250);
+		   Score_Board.setVisible(true);
+		   Score_Board.setLayout(null);
+		   Score_Board.setBackground(Color.pink);
+
+		   Score_Board = new Panel ();
+		   Score_Board.setBounds(460,80,300,250);
+		   Score_Board.setVisible(true);
+		   Score_Board.setLayout(null);
+		   Score_Board.setBackground(Color.pink);
+		   
+		   Decision_Board = new Panel ();
+		   Decision_Board.setBounds(460,340,300,240);
+		   Decision_Board.setVisible(true);
+		   Decision_Board.setLayout(null);
+		   Decision_Board.setBackground(Color.gray);
+		   
+		   Button1 = new Button("");
+		   Button1.setBounds(0,0,150,140);
+		   Button1.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button1.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button1.setForeground(Color.red);   
+				   }else {
+					   Button1.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   Button2 = new Button("");
+		   Button2.setBounds(150,0,150,140);
+		   Button2.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {		  
+				   Button2.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button2.setForeground(Color.red);   
+				   }else {
+					   Button2.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   
+		   Button3 = new Button("");
+		   Button3.setBounds(300,0,150,140);
+		   Button3.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button3.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button3.setForeground(Color.red);   
+				   }else {
+					   Button3.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   		
+					
+		   
+		   Button4 = new Button("");
+		   Button4.setBounds(0,140,150,140);
+		   Button4.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+					
+		   
+				   Button4.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button4.setForeground(Color.red);   
+				   }else {
+					   Button4.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   Button5 = new Button("");
+		   Button5.setBounds(150,140,150,140);
+		   Button5.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button5.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button5.setForeground(Color.red);   
+				   }else {
+					   Button5.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   Button6 = new Button("");
+		   Button6.setBounds(300,140,150,140);
+		   Button6.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button6.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button6.setForeground(Color.red);   
+				   }else {
+					   Button6.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   Button7 = new Button("");
+		   Button7.setBounds(0,280,150,140);
+		   Button7.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button7.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button7.setForeground(Color.red);   
+				   }else {
+					   Button7.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   Button8 = new Button("");
+		   Button8.setBounds(150,280,150,140);
+		   Button8.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+		    
+				   Button8.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button8.setForeground(Color.red);   
+				   }else {
+					   Button8.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		   
+		   
+		   Button9 = new Button("");
+		   Button9.setBounds(300,280,150,140);
+		   Button9.addActionListener(new ActionListener () {
+			   public void actionPerformed(ActionEvent e) {
+				   Button9.setLabel(startgame);
+				   if (startgame.equalsIgnoreCase("X")) {
+					   Button9.setForeground(Color.red);   
+				   }else {
+					   Button9.setForeground(Color.blue);
+				   }
+				   if(startgame.equalsIgnoreCase("X")) {
+					   startgame = "O" ;
+				   } else {  
+					   startgame = "X" ;
+				   }
+					 
+			   }  
+		   });
+		    
+		   
+		   frame.add(Board_Holders);
+		   Board_Holders.add(Button_Board);
+		   Board_Holders.add(Score_Board);
+		   Board_Holders.add(Decision_Board);
+		   Button_Board.add(Button1);
+		   Button_Board.add(Button2);
+		   Button_Board.add(Button3);
+		   Button_Board.add(Button4);
+		   Button_Board.add(Button5);
+		   Button_Board.add(Button6);
+		   Button_Board.add(Button7);
+		   Button_Board.add(Button8);
+		   Button_Board.add(Button9);
+	 }
+	 
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      new  MainBoard_TTT();
+	}
+
+}
