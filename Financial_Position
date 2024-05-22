@@ -1,0 +1,485 @@
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.*;
+import java.util.ArrayList;
+
+public class balance_sheet {
+
+	JFrame f = new JFrame ();
+	JLabel company_label, date_label;
+	JLabel Account_title, Amount,question;
+	JLabel d1,d2,d3,T_asset,T_liabilities,T_capital, status;
+	JTextField company,date, remove_row, Account_txt,amount_txt;
+	JPanel panel1, panel2, panel3, panel4,panel5;
+	JButton insert,remove, confirm,delete,summary,close;
+	JRadioButton assets, liabilities, capital,current,non_current;
+	DefaultTableModel tableL = new DefaultTableModel();
+	JTable tb = new JTable(tableL);
+	JScrollPane sp = new JScrollPane(tb);
+	
+	JLabel k1,k2,k3;
+	ArrayList<Double> list1 = new ArrayList<Double>();
+	ArrayList<Double> list2 = new ArrayList<Double>();
+	ArrayList<Double> list3= new ArrayList<Double>();
+
+	DefaultTableModel tableL2 = new DefaultTableModel();
+	JTable tb2 = new JTable(tableL2);
+	JScrollPane sp2 = new JScrollPane(tb2);
+	
+	DefaultTableModel tableL3 = new DefaultTableModel();
+	JTable tb3 = new JTable(tableL3);
+	JScrollPane sp3 = new JScrollPane(tb3);
+	
+	double check_A, check_L,check_E;
+	int r,k,l;
+	String com_name,time;
+
+	balance_sheet (){
+		
+		f.setTitle("Balance Sheet");
+		f.setResizable(true);
+		f.setSize(800,700);
+		f.setLayout(null);
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		panel1 = new JPanel();
+		panel1.setBackground(Color.cyan);
+		panel1.setLayout(null);
+		panel1.setSize(800,700);
+		
+		panel2 = new JPanel();
+		panel2.setBounds(250, 100, 300, 250);
+		panel2.setBackground(Color.red);
+		panel2.setLayout(null);
+
+		company = new JTextField();
+		company.setBounds(25,40,250,40);
+		
+		date = new JTextField();
+		date.setBounds(25,120,250,40);
+		
+		company_label = new JLabel("Enter the Company Name");
+		company_label.setBounds(25,20,150,25);	
+		company_label.setForeground(Color.white);
+		
+		date_label = new JLabel("Accounting Period");
+		date_label.setBounds(25,100,150,25);
+		date_label.setForeground(Color.white);
+		
+		
+		
+		panel3 = new JPanel();
+		panel3.setBounds(0, 0, 300, 700);
+		panel3.setBackground(Color.pink);
+		panel3.setLayout(null);
+		panel3.setVisible(false);
+		
+		panel4 = new JPanel();
+		panel4.setBounds(300, 0, 500, 700);
+		panel4.setBackground(Color.gray);
+		panel4.setLayout(null);
+		panel4.setVisible(false);
+		
+		d1 = new JLabel();
+		d1.setBounds(150,3,300,12);
+		d1.setForeground(Color.white);
+		d2 = new JLabel("Statement of Financial Position");
+		d2.setBounds(150,16,300,10);
+		d2.setForeground(Color.white);
+		d3 =  new JLabel();
+		d3.setBounds(150,27,300,13);
+		d3.setForeground(Color.white);
+		
+		T_asset =  new JLabel();
+		T_asset.setBounds(5,605,200,20);
+		T_asset.setForeground(Color.white);
+		
+		T_liabilities =  new JLabel();
+		T_liabilities.setBounds(5,625,200,20);
+		T_liabilities.setForeground(Color.white);
+		
+		T_capital =  new JLabel();
+		T_capital.setBounds(250,605,200,20);
+		T_capital.setForeground(Color.white);
+		
+		status =  new JLabel();
+		status.setBounds(70,170,150,40);
+		
+		sp.setBounds(0, 40, 500, 200);
+		tableL.addColumn("Account Tittle");
+		tableL.addColumn("Amount");
+		
+		sp2.setBounds(0, 201, 500, 200);
+		tableL2.addColumn("Account Tittle");
+		tableL2.addColumn("Amount");
+		
+		sp3.setBounds(0, 401, 500, 200);
+		tableL3.addColumn("Account Tittle");
+		tableL3.addColumn("Amount");
+		
+		
+		tableL.insertRow(0, new Object[] {"Assets"});
+		tableL2.insertRow(0, new Object[] {"Liabilities"});
+		tableL3.insertRow(0, new Object[] {"Owner's Equity"});
+
+		ButtonGroup bg1 = new ButtonGroup();
+		
+		
+		
+		assets = new JRadioButton("Assets");
+		assets.setBounds(45,35,70,30);
+		assets.setBackground(Color.pink);
+		assets.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				picker();
+			}
+		});
+		
+		
+		liabilities = new JRadioButton("Liabilities");
+		liabilities.setBounds(145,35,100,30);
+		liabilities.setBackground(Color.pink);
+		liabilities.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				picker();
+			}
+		});
+		
+		capital = new JRadioButton("Owner's Equity");
+		capital.setBounds(65,75,120,30);
+		capital.setBackground(Color.pink);
+		capital.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				picker();
+			}
+		});
+		
+		bg1.add(assets);
+		bg1.add(liabilities);
+		bg1.add(capital);
+		
+		Account_title = new JLabel("Account Title");
+		Account_title.setBounds(35,130,120,25);
+		
+		Amount = new JLabel("Amount");
+		Amount.setBounds(35,200,120,25);
+		
+		Account_txt = new JTextField();
+		Account_txt.setBounds(35,150,220,40);
+		
+		amount_txt = new JTextField();
+		amount_txt.setBounds(35,220,220,40);
+		
+		ButtonGroup bg = new ButtonGroup();
+		
+		current = new JRadioButton("Current");
+		current.setBounds(35,270,100,40);
+		current.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+		
+
+		}
+		});
+		
+		non_current = new JRadioButton("Non-Current");
+		non_current.setBounds(135,270,120,40);
+		non_current.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			
+			
+			
+			}
+			});
+		bg.add(current);
+		bg.add(non_current);
+		
+		delete = new JButton("Delete");
+		delete.setBounds(145, 330, 100, 40);
+		delete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Account_txt.setText("");
+				amount_txt.setText("");
+				bg.clearSelection();
+                
+			}
+		});
+		
+		insert = new JButton("Insert");
+		insert.setBounds(35, 330, 100, 40);
+		insert.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (Account_txt.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(f,"Insert Account Tittle");	
+				}else if(amount_txt.getText().isEmpty()) {
+				JOptionPane.showMessageDialog(f,"Insert Amount");	
+				}
+				choosen();
+				
+				 
+			}
+		});
+		
+		question = new JLabel("Do you want to delete a row?");
+		question.setBounds(35, 370, 200, 30);
+		
+		
+		remove_row = new JTextField();
+		remove_row.setBounds(35, 400, 145, 40);
+		
+		remove = new JButton("Remove");
+		remove.setBounds(180, 400, 100, 40);
+		remove.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				int y = Integer.parseInt(remove_row.getText());
+				if (y == 0 ) {
+				JOptionPane.showMessageDialog(f,"Invalid Input");	
+				}else if(assets.isSelected()&& y >r) {
+				JOptionPane.showMessageDialog(f,"Invalid Input");	
+				}else if(liabilities.isSelected()&& y >k) {
+				JOptionPane.showMessageDialog(f,"Invalid Input");	
+				}else if(capital.isSelected()&& y >l){
+				JOptionPane.showMessageDialog(f,"Invalid Input");	
+				}else if(remove_row.getText().isEmpty()){
+				JOptionPane.showMessageDialog(f,"No Input");
+				}else {
+				remove_func();
+				}
+			}
+			
+		});
+		
+		confirm = new JButton("Confirm");
+		confirm.setBackground(Color.WHITE);
+		confirm.setForeground(Color.BLACK);
+		confirm.setFont(new Font("Arial",Font.BOLD,25));
+		confirm.setBounds(85,180,150,50);
+		confirm.setHorizontalAlignment(SwingConstants.CENTER);
+		confirm.addActionListener(new ActionListener (){
+		public void actionPerformed( ActionEvent e) {
+		 	com_name = company.getText(); 
+		 	time = date.getText();
+	    if(company.getText().isEmpty()) {
+	    JOptionPane.showMessageDialog(f,"Insert Company name");
+	    }else if(date.getText().isEmpty()) {
+	    JOptionPane.showMessageDialog(f,"Insert Accounting Period");	
+	    }else if (company.getText().isEmpty()||date.getText().isEmpty()) {
+	    JOptionPane.showMessageDialog(f,"Insert Company Name and Accounting Period");	
+	    }else {
+	    	panel1.setVisible(false);
+	    	panel3.setVisible(true);
+	    	panel4.setVisible(true);
+	    	d1.setText(com_name);
+	    	
+	    	d3.setText(time);
+	    }
+	    
+		}		
+		});
+		
+		panel5 = new JPanel();
+		panel5.setBounds(250, 250, 350, 350);
+		panel5.setBackground(Color.white);
+		panel5.setLayout(null);
+		panel5.setVisible(false);
+		
+		close = new JButton("X");
+		close.setBounds(300, 0, 50, 30);
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				panel5.setVisible(false);
+			}
+		});
+		
+		
+		
+		summary = new JButton("Summary");
+		summary.setBounds(60, 450, 150, 40);
+		summary.addActionListener( new ActionListener (){
+			public void actionPerformed(ActionEvent e) {
+				panel5.setVisible(true);
+				checker ();
+			}
+			
+		});
+		
+		k1 = new JLabel("Assets: ");
+		k1.setBounds(30, 40, 150, 30);
+		
+		k2 = new JLabel("Liabilities: ");
+		k2.setBounds(30, 90, 150, 30);
+		
+		k3 = new JLabel("Owner's Equity: ");
+		k3.setBounds(30, 140, 150, 30);
+		panel5.add(k1);
+		panel5.add(k2);
+		panel5.add(k3);
+		panel5.add(close);
+		f.add(panel5);
+		panel5.add(status);
+		panel3.add(summary);
+		panel4.add(T_asset);
+		panel4.add(T_liabilities);
+		panel4.add(T_capital);
+		panel4.add(d1);
+		panel4.add(d2);
+		panel4.add(d3);
+		panel4.add(sp3);
+		panel4.add(sp2);
+		panel4.add(sp);
+		//panel4.add(sp2);
+		//panel4.add(sp3);
+		panel3.add(delete);
+		panel3.add(remove_row);
+		panel3.add(remove);
+		panel3.add(question);
+		panel3.add(current);
+		panel3.add(insert);
+		panel3.add(non_current);
+		panel3.add(Account_title);
+		panel3.add(Amount);
+		panel3.add(Account_txt);
+		panel3.add(amount_txt);
+		panel3.add(assets);
+		panel3.add(liabilities);
+		panel3.add(capital);
+		panel2.add(company_label);
+		panel2.add(date_label);
+		panel2.add(company);
+		panel2.add(date);
+		panel2.add(confirm);
+		panel1.add(panel2);
+		f.add(panel4);
+		f.add(panel1);
+		f.add(panel3);
+		f.setVisible(true);
+		
+	}
+	
+	public void	picker() {
+		if(capital.isSelected()) {
+			current.setVisible(false);	
+			non_current.setVisible(false);	
+			}else if(assets.isSelected()){
+				current.setVisible(true);	
+				non_current.setVisible(true);
+			}else if(liabilities.isSelected()){
+				current.setVisible(true);	
+				non_current.setVisible(true);
+			}
+	}
+	public void amountz () {
+		
+	}
+	public void choosen() {
+		 r = tb.getRowCount();
+		 k = tb2.getRowCount();
+		 l = tb3.getRowCount();
+		
+		
+		double m = Double.parseDouble(amount_txt.getText());
+		
+		if (assets.isSelected()&& current.isSelected()) { 
+			tableL.insertRow(r,new Object[] {Account_txt.getText()+" (Current)",m});	
+			
+			list1.add(m);
+			}else if(assets.isSelected()&& non_current.isSelected())  {		
+				tableL.insertRow(r,new Object[] {Account_txt.getText()+"(Non-Current)",m});	
+				
+				list1.add(m);
+				}else if (liabilities.isSelected()&& current.isSelected()) { 
+					tableL2.insertRow(k,new Object[] {Account_txt.getText()+" (Current)",m});	
+					list2.add(m);
+					}else if(liabilities.isSelected()&& non_current.isSelected())  {		
+						tableL2.insertRow(k,new Object[] {Account_txt.getText()+"(Non-Current)",m});	
+						list2.add(m);
+						}else if(capital.isSelected()) {
+						tableL3.insertRow(l,new Object[] {Account_txt.getText()+"(Non-Current)",m});
+						list3.add(m);
+	    			}
+		
+		double s = 0 ;
+		for(int i=0;i < list1.size();i++) {
+		   s += list1.get(i);	
+		}
+		check_A = s;
+
+		T_asset.setText("TOTAL ASSETS "+s);
+		double f = 0 ;
+		for(int i=0;i < list2.size();i++) {
+		   f += list2.get(i);	
+		}
+		check_L = f ;
+		T_liabilities.setText("TOTAL LIABILITIES "+f);
+		double g = 0 ;
+		for(int i=0;i < list3.size();i++) {
+		   g += list3.get(i);	
+		}
+		check_E= g ;
+		T_capital.setText("TOTAL OWNER'S EQUITY " +g );
+		
+		
+		check_E= g ;
+	}
+	
+	public void remove_func() {
+		int p = Integer.parseInt(remove_row.getText());	
+		int q = p-1;
+		
+		check_L = 0;
+		if(assets.isSelected()) {
+			tableL.removeRow(p);
+		list1.remove(q);
+		double sum1 = 0 ;
+		for(int i=0;i < list1.size();i++) {
+			   sum1 += list1.get(i);	
+			}	
+		T_asset.setText("TOTAL ASSETS "+sum1);
+		check_A = sum1;
+		}else if(liabilities.isSelected()) {
+			tableL2.removeRow(p);
+		list2.remove(q);
+		double g1 = 0 ;
+		for(int i=0;i < list2.size();i++) {
+				   g1 += list2.get(i);	
+	    }	
+		check_L = g1;
+		T_liabilities.setText("TOTAL LIABILITIES "+g1);
+		}else if(capital.isSelected()) {
+			tableL3.removeRow(p);
+			list3.remove(q);
+		double g2 = 0 ;
+		for(int i=0;i < list3.size();i++) {
+	    g2 += list3.get(i);	
+		 }		
+		check_E = g2;
+		T_capital.setText("TOTAL OWNER'S EQUITY " +g2 );	
+		}
+		
+	}
+	
+	public void checker () {
+		
+		k1.setText("Assets: "+check_A);
+		k2.setText("Liabilities: "+check_L);
+		k3.setText("Owner's Equity: "+check_E);
+		
+		if (check_A == (check_E + check_L)) {
+			status.setText("BALANCED");
+			status.setForeground(Color.GREEN);
+		}else {
+			status.setText("NOT BALANCED");
+			status.setForeground(Color.RED);
+		}
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		balance_sheet bs = new balance_sheet ();
+	}
+
+}
